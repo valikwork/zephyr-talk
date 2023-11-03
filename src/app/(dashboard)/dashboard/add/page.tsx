@@ -1,7 +1,6 @@
 import AddFriendForm from '@/components/AddFriendForm'
 import React from 'react'
 
-
 const page = () => {
   return (
     <section className='pt-8'>

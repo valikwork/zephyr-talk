@@ -4,7 +4,6 @@ import Image from 'next/image';
 type LogoProps = {
   width?: number,
   height?: number,
-
 }
 
 const Logo = ({
@@ -12,7 +11,7 @@ const Logo = ({
   height = 48
 }: LogoProps) => {
   return (
-    <Image src='/images/zephyrLogo.webp' alt="ZephyrTalk logo" width={width} height={height} />
+    <Image src='/images/zephyrLogo.png' alt="ZephyrTalk logo" width={width} height={height} />
   )
 }
 
