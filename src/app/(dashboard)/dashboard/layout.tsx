@@ -9,13 +9,15 @@ import SignOutButton from '@/components/SignOutButton'
 import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOptions'
 import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
+import { getFriendsByUserId } from '@/helpers/get-friends-by-id'
+import SidebarChatList from '@/components/SidebarChatList'
 
 interface LayoutProps {
   children: ReactNode
 }
 
 export const metadata = {
-  title: 'FriendZone | Dashboard',
+  title: 'ZephyrTalk | Dashboard',
   description: 'Your dashboard',
 }
 
@@ -32,6 +34,8 @@ const Layout = async ({ children }: LayoutProps) => {
 
   const session = await getServerSession(authOptions)
   if (!session) notFound()
+
+  const friends = await getFriendsByUserId(session.user.id)
 
   const unseenRequestCount = (
     (await fetchRedis(
@@ -56,16 +60,16 @@ const Layout = async ({ children }: LayoutProps) => {
           <Icons.Logo />
         </Link>
 
-        {/* {friends.length > 0 ? (
+        {friends.length > 0 ? (
           <div className='text-xs font-semibold leading-6 text-gray-400'>
             Your chats
           </div>
-        ) : null} */}
+        ) : null}
 
         <nav className='flex flex-1 flex-col'>
           <ul role='list' className='flex flex-1 flex-col gap-y-7'>
             <li>
-              {/* <SidebarChatList sessionId={session.user.id} friends={friends} /> */}
+              <SidebarChatList sessionId={session.user.id} friends={friends} />
             </li>
             <li>
               <div className='text-xs font-semibold leading-6 text-gray-400'>
@@ -127,7 +131,7 @@ const Layout = async ({ children }: LayoutProps) => {
         </nav>
       </div>
 
-      <aside className='max-h-screen container py-16 md:py-12 w-full'>
+      <aside className='max-h-screen container px-8 py-16 md:py-12 w-full'>
         {children}
       </aside>
     </div>
