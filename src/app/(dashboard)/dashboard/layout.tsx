@@ -10,7 +10,6 @@ import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOption
 import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
 
-
 interface LayoutProps {
   children: ReactNode
 }
