@@ -1,8 +1,8 @@
-import { UserPlus } from 'lucide-react'
+import { UserPlus, LucideProps } from 'lucide-react'
 import Logo from '../ui/Logo'
 
 export const Icons = {
-  Logo: () => (
+  Logo: (props: LucideProps) => (
     <Logo />
   ),
   UserPlus,

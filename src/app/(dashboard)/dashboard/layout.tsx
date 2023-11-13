@@ -1,5 +1,5 @@
 import { Icons } from '@/components/Icons'
-import { SidebarOption } from '@/types/typings'
+import { SidebarOption } from '@/types'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -11,6 +11,7 @@ import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
 import { getFriendsByUserId } from '@/helpers/get-friends-by-id'
 import SidebarChatList from '@/components/SidebarChatList'
+import MobileChatLayout from '@/components/MobileChatLayout'
 
 interface LayoutProps {
   children: ReactNode
@@ -47,12 +48,12 @@ const Layout = async ({ children }: LayoutProps) => {
   return (
     <div className='w-full flex h-screen'>
       <div className='md:hidden'>
-        {/* <MobileChatLayout
+        <MobileChatLayout
           friends={friends}
           session={session}
           sidebarOptions={sidebarOptions}
           unseenRequestCount={unseenRequestCount}
-        /> */}
+        />
       </div>
 
       <div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6'>
