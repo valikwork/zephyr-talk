@@ -7,7 +7,7 @@ import { signIn } from 'next-auth/react'
 import { toast } from 'react-hot-toast'
 import Logo from '@/components/ui/Logo'
 
-const page = () => {
+const LoginPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const loginWithGoogle = async () => {
@@ -46,4 +46,4 @@ const page = () => {
     </>
   )
 }
-export default page
+export default LoginPage
